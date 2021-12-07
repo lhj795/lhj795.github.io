@@ -19,7 +19,7 @@ function App() {
         <Route path="/input-and-output" component={InputAndOutput} />
         <Route path="/hyperlink" component={Hyperlink} />
         <Route path="/technocat1" component={TechnoCat1} />
-        <Route path="/technocat2" component={TechnoCat2} />s
+        <Route path="/technocat2" component={TechnoCat2} />
         <Route path="/technocat3" component={TechnoCat3} />
         <Route path="/technocat4" component={TechnoCat4} />
         <Route path="/technocat5" component={TechnoCat5} />
