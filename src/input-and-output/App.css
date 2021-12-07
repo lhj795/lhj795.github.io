@@ -1,0 +1,28 @@
+@font-face {
+  font-family: DMSans-Bold;
+  src: url("fonts/DMSans-Bold.ttf") format("ttf"), url("fonts/DMSans-Bold.ttf")  format("truetype");
+}
+
+@font-face {
+  font-family: DMSans-Medium;
+  src: url("fonts/DMSans-Medium.ttf") format("ttf"), url("fonts/DMSans-Medium.ttf")  format("truetype");
+}
+
+@font-face {
+  font-family: DMSans-Regular;
+  src: url("fonts/DMSans-Regular.ttf") format("ttf"), url("fonts/DMSans-Regular.ttf")  format("truetype");
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background: #757575; 
+  border-radius: 3px;
+  height: 100px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #333333; 
+}
