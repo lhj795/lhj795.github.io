@@ -11,6 +11,7 @@ import TechnoCat5 from './hyperlink/Technocat5';
 import TechnoCat6 from './hyperlink/Technocat6';
 import TechnoCat7 from './hyperlink/Technocat7';
 import InputAndOutput from './input-and-output/InputAndOutput';
+import { Resume } from './change-over-time/InteractiveResume';
 
 function App() {
   return (
@@ -25,6 +26,11 @@ function App() {
         <Route path="/technocat5" component={TechnoCat5} />
         <Route path="/technocat6" component={TechnoCat6} />
         <Route path="/technocat7" component={TechnoCat7} />
+        <Route path="/change-over-time" component={Resume} />
+        <Route path='/topic-presentation' component={() => {
+          window.location.href = 'https://docs.google.com/presentation/d/1-LFw1YcZnGfeDD1SmCLLhCnABr515LoeM46IK-Bt2hk/edit?usp=sharing';
+          return null;
+        }}/>
     </Router>
   );
 }

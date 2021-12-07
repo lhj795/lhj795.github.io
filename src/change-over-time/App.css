@@ -1,0 +1,39 @@
+@font-face {
+  font-family: ClarendonBold;
+  src: url("fonts/ClarendonBold.otf")  format("opentype");
+}
+
+@font-face {
+  font-family: ClarendonRegular;
+  src: url("fonts/ClarendonRegular.otf")  format("opentype");
+}
+
+@font-face {
+  font-family: Monaco;
+  src: url("fonts/Monaco.ttf")  format("truetype");
+}
+
+@font-face {
+  font-family: AkagiRegular;
+  src: url("fonts/AkagiBook.otf")  format("opentype");
+}
+
+@font-face {
+  font-family: AkagiMedium;
+  src: url("fonts/AkagiMedium.otf")  format("opentype");
+}
+
+@font-face {
+  font-family: AkagiSemibold;
+  src: url("fonts/AkagiSemibold.otf")  format("opentype");
+}
+
+@font-face {
+  font-family: AkagiBold;
+  src: url("fonts/AkagiBold.otf")  format("opentype");
+}
+
+svg rect {
+  fill: white;
+  mask: URL(#mask);
+}

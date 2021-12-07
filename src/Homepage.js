@@ -6,10 +6,12 @@ export default function Homepage() {
     return (
         <div>
             <h1>Nicole Lee</h1>
-            <Link to='/hyperlink'>Hyperlink</Link>
-            <p>Change over Time</p>
-            <Link to='/input-and-output'>Input and Output</Link>
-            <p>Topic Presentation</p>
+            <div style={{display: "flex", flexDirection: "column"}}>
+                <Link to='/hyperlink'>Hyperlink</Link>
+                <Link to='/change-over-time'>Change over Time</Link>
+                <Link to='/input-and-output'>Input and Output</Link>
+                <Link to='/topic-presentation'>Topic Presentation</Link>
+            </div>
         </div>
     )
 };

@@ -1,0 +1,11 @@
+/* @media screen and (min-width: 1920px) and (max-width: 2560px) {
+    video {
+        margin-top: -6.5%
+    }
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+    video {
+        margin-top: -8%
+    }
+} */
