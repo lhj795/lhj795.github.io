@@ -15,7 +15,7 @@ export default function TechnoCat6() {
                     <br/>
                     <br/>
                     <br/>
-                    <pre style={{fontFamily: "inherit"}}>                 vpq#peifgu3gy               to it!</pre>
+                    <pre style={{fontFamily: "inherit"}}>                  vpq#peifgu3gy               to it!</pre>
                     <br/>
                     <br/>
                 </p>
