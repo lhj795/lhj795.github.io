@@ -694,7 +694,7 @@ export function Resume(props) {
 
     const [showTenX, setShowTenX] = useState(false);
     const onHover = (event) => {
-        setShowTenX(true);s
+        setShowTenX(true);
         console.log("hovered!");
     };
     const onLeave = (event) => {
