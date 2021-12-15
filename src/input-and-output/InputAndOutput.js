@@ -30,6 +30,7 @@ import Steel from './img/type_Steel.svg';
 import Water from './img/type_Water.svg';
 import BGOne from './img/BGOne.svg';
 import BGTwo from './img/BGTwo.svg';
+import html2canvas from "html2canvas";
 
 const useStyles = makeStyles(({
   wrap: {
@@ -225,11 +226,11 @@ const useStyles = makeStyles(({
 }));
 
 function rgbaObjToStr(obj) {
-  return `rgba(${obj.r},${obj.g},${obj.b},${obj.a})`;
+  return `rgb(${obj.r},${obj.g},${obj.b})`;
 }
 
 function rgbaObjToStr2(obj) {
-  return `rgba(${obj.r},${obj.g},${obj.b},${obj.a})`;
+  return `rgb(${obj.r},${obj.g},${obj.b})`;
 }
 
 const presetColors = [
@@ -301,6 +302,7 @@ export default function App(props) {
   const handleTextColor = e => {
     setTextColor(e.rgb);
   };
+  
   const [name, setName] = useState("");
   const [age, setAge] = useState(-1);
 
@@ -327,6 +329,93 @@ export default function App(props) {
         console.log(res)
       }
     )
+  };
+
+  const randomNum = Math.floor(Math.random() * 898) + 1;
+  const randomHex1 = Math.floor(Math.random() * 255) + 1;
+  const randomHex2 = Math.floor(Math.random() * 255) + 1;
+  const randomHex3 = Math.floor(Math.random() * 255) + 1;
+  const randomHex4 = Math.floor(Math.random() * 255) + 1;
+  const randomHex5 = Math.floor(Math.random() * 255) + 1;
+  const randomHex6 = Math.floor(Math.random() * 255) + 1;
+
+  const names = [
+    "John Doe",
+    "Jane Solomon",
+    "Tina Waters",
+    "Mariella Villegas",
+    "Keenan Bass",
+    "Greta O'Quinn",
+    "Usmaan Harding",
+    "Muneeb Wilkinson",
+    "Viola Beattie",
+    "Jamal Mccartney",
+    "Mckenzie Mahoney",
+    "Mcauley Mueller",
+    "Mia-Rose Stevens",
+    "Helen Cain",
+    "Jana Johnston",
+    "Jermaine Schneider",
+    "Gordon Arnold",
+    "Stacey Lowe",
+    "Marcus Fitzgerald",
+    "Leo Banks",
+    "Laura Ferguson",
+    "Dave Silva",
+    "Justin Daniels",
+    "Clarence Hernandez",
+    "Jessica Luna",
+    "Timothy Daniel",
+    "Kelli Strickland",
+    "Tasha Ellis",
+    "Steve Newman",
+    "Jill Reese",
+    "Salvatore Saunders",
+    "Holly Dawson",
+    "Viola Bell",
+    "Brooke Hopkins",
+    "Johnathan Delgado",
+    "Kirk Jones",
+    "Elsa Herrera",
+    "Krystal Caldwell",
+  ]
+  
+  const randomSearch = () => {
+    Axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`).then(
+      (res) => {
+        if (res.data.abilities.length > 1 && res.data.sprites.other.dream_world.front_default !== null) {
+          setPokemon({
+            name: res.data.name,
+            img: res.data.sprites.other.dream_world.front_default, 
+            type: res.data.types[0].type.name,
+            abilities: res.data.abilities,
+            ability1: res.data.abilities[0].ability.name.replace("-", " "),
+            ability2: res.data.abilities[1].ability.name.replace("-", " "),
+          });
+        } else if (res.data.abilities.length == 1 && res.data.sprites.other.dream_world.front_default !== null) {
+          setPokemon({
+            name: res.data.name,
+            img: res.data.sprites.other.dream_world.front_default, 
+            type: res.data.types[0].type.name,
+            abilities: res.data.abilities,
+            ability1: res.data.abilities[0].ability.name.replace("-", " "),
+          });
+        } else {};
+      }
+    );
+    setColor({
+      r: randomHex1,
+      g: randomHex2,
+      b: randomHex3,
+    });
+    setTextColor({
+      r: randomHex4,
+      g: randomHex5,
+      b: randomHex6,
+    });
+    console.log(color);
+    setName(names[Math.floor(Math.random() * 37) + 1]);
+    setAge(Math.floor(Math.random() * 100) + 1);
   }
 
   const pokemonCheck = (pokemon == null) ? <div>Oh no! {pokemonName} seems to not be in our Pokédex.</div> : [];
@@ -352,6 +441,20 @@ export default function App(props) {
   (pokemon.type === "steel") ? <img className={classes.typeIcon} alt="steel" src={Steel}/> :
   (pokemon.type === "water") ? <img className={classes.typeIcon} alt="water" src={Water}/> : [];
 
+  useEffect(() => {
+    const node = document.getElementById("pokemon-card");
+    let image = new Image();
+
+    // useCors to draw image from different origin
+    html2canvas(node, { useCORS: true }).then((canvas) => {
+      let a = document.createElement("a");
+      document.body.appendChild(a);
+      a.download = "test.png";
+      a.href = canvas.toDataURL();
+      a.click();
+    });
+  });
+
   return (
     <div className={classes.wrap}>
       <div className={classes.checkAndCard}>
@@ -364,7 +467,12 @@ export default function App(props) {
             {name}
             {pokemonTypeImg}
           </div>
-          <div className={classes.userAge} style={{color: rgbaObjToStr2(textColor)}}>{(age === -1)? "" : (age + 1)}</div>
+          <div className={classes.userAge} style={{color: rgbaObjToStr2(textColor)}}>
+          <svg style={{height: "13px", width: "auto", marginRight: "5px"}} class="heart" viewBox="0 0 32 29.6">
+            <path style={(age > 0) ? {fill: rgbaObjToStr2(textColor)} : {opacity: "0"}} d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+          </svg> 
+            {(age === -1)? "" : (age + 1)}
+          </div>
           <div className={classes.pokemonImgContainer}>
             <img className={classes.pokemonImg} alt="" src={pokemon.img}/>
           </div>
@@ -374,7 +482,7 @@ export default function App(props) {
       </div>
       <div className={classes.btns}>
         <PrimaryButton className={classes.btn}>Download</PrimaryButton>
-        <SecondaryButton onClick={() => setPokemonName(Math.floor(Math.random() * 898) + 1)} className={classes.btn}>Randomize!</SecondaryButton>
+        <SecondaryButton onClick={randomSearch} className={classes.btn}>Randomize!</SecondaryButton>
         <SecondaryButton onClick={() => window.location.reload(false)} className={classes.btn}>Reset</SecondaryButton>
       </div>
       <div className={classes.navBar}>
@@ -432,7 +540,7 @@ export default function App(props) {
             color={color}
             width="calc(100% - 20px)"
             presetColors={presetColors}
-            onChangeComplete={handleColor}
+            onChange={handleColor}
             disableAlpha
           />
           <div className={classes.label}> Your Second Favorite Color </div>
@@ -441,7 +549,7 @@ export default function App(props) {
             color={textColor}
             width="calc(100% - 20px)"
             presetColors={presetColors}
-            onChangeComplete={handleTextColor}
+            onChange={handleTextColor}
             disableAlpha
           />
         </div>
